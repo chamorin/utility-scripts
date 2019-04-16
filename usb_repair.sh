@@ -14,7 +14,7 @@ do
 done
 
 read -p "Are you sure you want to repair usb key $usb? `echo $'\n>' `It will delete all content on the usb (y/n): " choice
-while [ "$choice" != "y" ] || [ "$choice" != "n" ]
+while [ "$choice" != "y" ] && [ "$choice" != "n" ]
 do
     echo "Error: enter a valid choice(y/n)"
     read -p "Are you sure you want to repair usb key $usb? `echo $'\n>' `It will delete all content on the usb (y/n): " choice
