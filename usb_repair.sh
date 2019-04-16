@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NUMBER_OF_KEYS=$(($(lsblk -do NAME,SIZE | grep -Ec '^([^l][^o][^o][^p]).*')-1))
+NUMBER_OF_KEYS=$(lsblk -dn | grep -Ec '^([^l][^o][^o][^p]).*')
 RE='^[0-9]+$'
 
 echo "NAME         SIZE"
@@ -14,11 +14,11 @@ do
     read -p "Choose a usb key to repair(#): " usb
 done
 
-read -p "Are you sure you want to repair usb key $usb? `echo $'\n>' `It will delete all content on the usb (y/n): " choice
+read -n 1 -p "Are you sure you want to repair usb key $(lsblk -dno NAME | grep -E '^([^l][^o][^o]).*' | sed -ne "$usb"p)? `echo $'\n>' `It will delete all content on the usb (y/n): " choice
 while [ "$choice" != "y" ] && [ "$choice" != "n" ]
 do
-    echo "Error: enter a valid choice(y/n)"
-    read -p "Are you sure you want to repair usb key $usb? `echo $'\n>' `It will delete all content on the usb (y/n): " choice
+    echo $'\nError: enter a valid choice(y/n)'
+    read -n 1 -p "Are you sure you want to repair usb key $(lsblk -dno NAME | grep -E '^([^l][^o][^o]).*' | sed -ne "$usb"p)? `echo $'\n>' `It will delete all content on the usb (y/n): " choice
 done
 
 if [ "$choice" == "n" ]; then
