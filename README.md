@@ -7,3 +7,4 @@ Bunch of useful scripts.
 * **disable_mousepad.sh** (disables mouse pad if is enabled and enables it if its disabled)
 * **setprox.sh** (sets a proxy from the terminal) NOT FINISHED
 * **keyboard_backlight.sh** (turns keyboard lights on and off)
+* **usb_repair.sh** (repair corrupted usb key) NOT FINISHED
